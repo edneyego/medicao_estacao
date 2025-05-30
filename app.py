@@ -99,7 +99,7 @@ app = FastAPI(lifespan=lifespan)
 @app.get("/estacao/media/{mes}/{ano}/{codigo}")
 def get_monthly_avg(mes:str, ano: str, codigo: str):
     try:
-        #mes, ano = int(mesano[:2]), int(mesano[2:])
+        mes, ano = int(mes), int(ano)
         start_date = datetime(ano, mes, 1)
         end_date = (start_date + timedelta(days=32)).replace(day=1)
 
@@ -138,7 +138,7 @@ def get_annual_avg(ano: int, codigo: str):
 @app.get("/estacao/{mes}/{ano}/{codigo}")
 def get_all_measurements(mes:str ,ano: str, codigo: str):
     try:
-        #mes, ano = int(mesano[:2]), int(mesano[2:])
+        mes, ano = int(mes), int(ano)
         start_date = datetime(ano, mes, 1)
         end_date = (start_date + timedelta(days=32)).replace(day=1)
 
